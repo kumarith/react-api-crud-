@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import NewRecord from "./NewRecord";
 
 type resultProps = {
   userId: number;
@@ -8,6 +9,12 @@ type resultProps = {
   title: string;
   body: string;
 };
+
+
+type newCompProps = {
+  returnCall: void;
+};
+
 
 function App() {
   const [data, setData] = useState<resultProps[]>([]);
@@ -39,6 +46,7 @@ function App() {
           {e.title} {e.id} <button onClick={deleteMe(e.id)}>Delete</button>
         </p>
       ))}
+      <NewRecord returnCall={() => { alert("reurn call from new record comp");  } }  ></NewRecord>
     </div>
   );
 }
